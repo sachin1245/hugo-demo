@@ -1,0 +1,12 @@
+{{ $style := resources.Get "scss/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+{{ partial "header.html" .}}
+
+<main class="products">
+    {{range .Site.Data.products}}
+        {{ partial "product.html"}}
+
+    {{end}}
+</main>
+
+{{ partial "footer.html" .}}
